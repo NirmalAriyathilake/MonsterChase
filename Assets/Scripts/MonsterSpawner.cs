@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterSpawner : MonoBehaviour
-{
+public class MonsterSpawner : MonoBehaviour {
     [SerializeField]
     private GameObject[] monsterReferences;
 
@@ -16,15 +15,12 @@ public class MonsterSpawner : MonoBehaviour
     private int randomSide;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         StartCoroutine(SpawnMonsters());
     }
 
-    IEnumerator SpawnMonsters()
-    {
-        while (true)
-        {
+    IEnumerator SpawnMonsters() {
+        while (true) {
             yield return new WaitForSeconds(Random.Range(1, 5));
 
             randomIndex = Random.Range(0, monsterReferences.Length);
@@ -32,15 +28,12 @@ public class MonsterSpawner : MonoBehaviour
 
             spawnedMonster = Instantiate(monsterReferences[randomIndex]);
 
-            if (randomSide == 0)
-            {
+            if (randomSide == 0) {
                 // left side
                 spawnedMonster.transform.position = leftPos.position;
 
                 spawnedMonster.GetComponent<Monster>().speed = Random.Range(4, 10);
-            }
-            else
-            {
+            } else {
                 // right side
                 spawnedMonster.transform.position = rightPos.position;
 
